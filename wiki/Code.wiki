@@ -5,8 +5,7 @@
 ==Logic Block Diagram==
 
 ==Code==
-
-<code="arduino">
+<code language = "arduino">
 
 #include <Time.h>
 #include <Servo.h> 
