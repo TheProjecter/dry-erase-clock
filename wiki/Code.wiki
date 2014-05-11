@@ -7,8 +7,8 @@
 ==Code==
 
 <code="arduino">
-
-</#include <Time.h>
+</code>
+#include <Time.h>
 #include <Servo.h> 
 
 //Three Servos Used
@@ -247,4 +247,4 @@ void c4r6(){servoleft.write(83); servoright.write(27);}
 void c4r7(){servoleft.write(84); servoright.write(25);}
 
 void liftup(){delay(500);servolift.write(up);delay(500);}
-void putdown(){delay(500);servolift.write(down);delay(500);}>
+void putdown(){delay(500);servolift.write(down);delay(500);}
