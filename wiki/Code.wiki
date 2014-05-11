@@ -1,3 +1,244 @@
 #summary All Code used in this project
 
 ==Code==
+
+#include <Time.h>
+#include <Servo.h> 
+
+//Three Servos Used
+Servo servolift;  
+Servo servoleft;
+Servo servoright;
+
+//Used for Position logic
+double homeposleft = 60;
+double homeposright = 30;
+double up = 0;
+double down = 20;
+
+//Used for writing each letter
+boolean newtime=false;
+int a = 0;
+int b = 10;
+int c = 10;
+int d = 9;
+int newminute=0;
+
+//attach servos to pins
+void setup() 
+{
+  setTime(12,10,0,2,5,2014);
+  newtime=true;
+  newminute=minute();
+  servolift.write(up);
+  servolift.attach(5); 
+  servoleft.attach(4);
+  servoright.attach(3); 
+} 
+
+
+void loop() 
+{    if(minute()!=newminute){
+    newminute=minute();
+  newtime=false;
+  }
+  timelogic();
+if(newtime==true){ //update the whiteboard everytime the time changes
+  erase();
+  number(a,b,c,d);
+  servolift.write(up);
+  delay(1000);
+  servoleft.write(homeposleft); 
+  servoright.write(homeposright); 
+  newtime=false;
+}
+}
+
+void timelogic(){
+  if((hour()==12)||(hour()==11)||(hour()==10)||(hour()==22)||(hour()==23)||(hour()==0)){a=1;}
+  else{a=0;}
+  if((hour()==0)||(hour()==12)){b=2;}
+  if((hour()==1)||(hour()==13)){b=1;}
+  if((hour()==2)||(hour()==14)){b=2;}
+  if((hour()==3)||(hour()==15)){b=3;}
+  if((hour()==4)||(hour()==16)){b=4;}
+  if((hour()==5)||(hour()==17)){b=5;}
+  if((hour()==6)||(hour()==18)){b=6;}
+  if((hour()==7)||(hour()==19)){b=7;}
+  if((hour()==8)||(hour()==20)){b=8;}
+  if((hour()==9)||(hour()==21)){b=9;}
+  if((hour()==10)||(hour()==22)){b=0;}
+  if((hour()==11)||(hour()==23)){b=1;}
+  if(minute()==0){c=0;d=0;}if(minute()==1){c=0;d=1;}if(minute()==2){c=0;d=2;}if(minute()==3){c=0;d=3;}if(minute()==4){c=0;d=4;}if(minute()==5){c=0;d=5;}if(minute()==6){c=0;d=6;}if(minute()==7){c=0;d=7;}if(minute()==8){c=0;d=8;}if(minute()==9){c=0;d=9;}
+  if(minute()==10){c=1;d=0;}if(minute()==11){c=1;d=1;}if(minute()==12){c=1;d=2;}if(minute()==13){c=1;d=3;}if(minute()==14){c=1;d=4;}if(minute()==15){c=1;d=5;}if(minute()==16){c=1;d=6;}if(minute()==17){c=1;d=7;}if(minute()==18){c=1;d=8;}if(minute()==19){c=1;d=9;}
+  if(minute()==20){c=2;d=0;}if(minute()==21){c=2;d=1;}if(minute()==22){c=2;d=2;}if(minute()==23){c=2;d=3;}if(minute()==24){c=2;d=4;}if(minute()==25){c=2;d=5;}if(minute()==26){c=2;d=6;}if(minute()==27){c=2;d=7;}if(minute()==28){c=2;d=8;}if(minute()==29){c=2;d=9;}
+  if(minute()==30){c=3;d=0;}if(minute()==31){c=3;d=1;}if(minute()==32){c=3;d=2;}if(minute()==33){c=3;d=3;}if(minute()==34){c=3;d=4;}if(minute()==35){c=3;d=5;}if(minute()==36){c=3;d=6;}if(minute()==37){c=3;d=7;}if(minute()==38){c=3;d=8;}if(minute()==39){c=3;d=9;}
+  if(minute()==40){c=4;d=0;}if(minute()==41){c=4;d=1;}if(minute()==42){c=4;d=2;}if(minute()==43){c=4;d=3;}if(minute()==44){c=4;d=4;}if(minute()==45){c=4;d=5;}if(minute()==46){c=4;d=6;}if(minute()==47){c=4;d=7;}if(minute()==48){c=4;d=8;}if(minute()==49){c=4;d=9;}
+  if(minute()==50){c=5;d=0;}if(minute()==51){c=5;d=1;}if(minute()==52){c=5;d=2;}if(minute()==53){c=5;d=3;}if(minute()==54){c=5;d=4;}if(minute()==55){c=5;d=5;}if(minute()==56){c=5;d=6;}if(minute()==57){c=5;d=7;}if(minute()==58){c=5;d=8;}if(minute()==59){c=5;d=9;}
+}
+
+void middle(){ //logic for middle lines
+
+ 
+}
+
+void erase(){ //logic for erasing
+  
+}
+
+void number(int cell1, int cell2, int cell3, int cell4) //contains the servo positions for writing all of the possible numbers
+{
+if(cell1 == 1){ //first cell one
+c1r1();putdown();c1r3();liftup();c1r5();putdown();c1r7();liftup();
+}
+if(cell2==0){ //second cell zero
+c2l1();putdown();c2r1();liftup();c2r2();putdown();c2r3();liftup();c2r5();putdown();c2r6();liftup();c2r7();putdown();c2l7();liftup();c2l6();putdown();c2l5();liftup();c2l3();putdown();c2l2();liftup();
+  middle();
+}
+if(cell2==1){ //second cell one
+ c2r1();putdown();c2r3();liftup();c2r5();putdown();c2r7();liftup();
+  middle();
+}
+if(cell2==2){ //second cell two
+  c2l1();putdown();c2r1();liftup();c2r2();putdown();c2r3();liftup(); c2r4();putdown();c2l4();liftup();c2l5();putdown();c2l6();liftup(); c2l7();putdown();c2r7();liftup();
+  middle();
+}
+if(cell2==3){//second cell three
+c2l1();putdown();c2r1();liftup();c2r2();putdown();c2r3();liftup(); c2r4();putdown();c2l4();liftup();c2r5();putdown();c2r6();liftup(); c2r7();putdown();c2l7();liftup();
+  middle();
+}
+if(cell2==4){//second cell four
+ c2l1();putdown();c2l3();liftup();c2l4();putdown();c2r4();liftup(); c2r3();putdown();c2r1();liftup();c2r5();putdown();c2r7();liftup();
+  middle();
+}
+if(cell2==5){//second cell five
+c2r1();putdown();c2l1();liftup();c2l2();putdown();c2l3();liftup(); c2l4();putdown();c2r4();liftup();c2r5();putdown();c2r6();liftup(); c2r7();putdown();c2l7();liftup();
+  middle();
+}
+if(cell2==6){//second cell six
+down=down+1;
+c2r1();putdown();c2l1();liftup();c2l2();putdown();c2l3();liftup(); c2l4();putdown();c2r4();liftup();c2r5();putdown();c2r6();liftup(); c2r7();putdown();c2l7();liftup();c2l6();putdown();c2l5();liftup();
+  middle();
+}
+if(cell2==7){//second cell seven
+c2l1();putdown();c2r1();liftup();c2r2();putdown();c2r3();liftup();c2r5();putdown();c2r7();liftup();
+  middle();
+}
+if(cell2==8){//second cell eight
+c2l1();putdown();c2r1();liftup();c2r2();putdown();c2r3();liftup();c2r5();putdown();c2r6();liftup();c2r7();putdown();c2l7();liftup();c2l6();putdown();c2l5();liftup();c2l3();putdown();c2l2();liftup();
+c2l4();putdown();c2r4();liftup();
+  middle();
+}
+if(cell2==9){//second cell nice
+c2l1();putdown();c2r1();liftup();c2r2();putdown();c2r3();liftup();c2r5();putdown();c2r7();liftup();c2l2();putdown();c2l3();liftup();c2l4();putdown();c2r4();liftup();c2l7();putdown();c2r7();liftup();
+  middle();
+}
+if(cell3==0){ //third cell zero
+c3l1();putdown();c3r1();liftup();c3r2();putdown();c3r3();liftup();c3r5();putdown();c3r6();liftup();c3r7();putdown();c3l7();liftup();c3l6();putdown();c3l5();liftup();c3l3();putdown();c3l2();liftup();
+}
+if(cell3==1){ //third cell one
+c3r1();putdown();c3r3();liftup();c3r5();putdown();c3r7();liftup();
+}
+if(cell3==2){ //third cell two
+c3l1();putdown();c3r1();liftup();c3r2();putdown();c3r3();liftup(); c3r4();putdown();c3l4();liftup();c3l5();putdown();c3l6();liftup(); c3l7();putdown();c3r7();liftup();
+}
+if(cell3==3){ //third cell three
+c3l1();putdown();c3r1();liftup();c3r2();putdown();c3r3();liftup(); c3r4();putdown();c3l4();liftup();c3r5();putdown();c3r6();liftup(); c3r7();putdown();c3l7();liftup();
+}
+if(cell3==4){ //third cell four
+c3l1();putdown();c3l3();liftup();c3l4();putdown();c3r4();liftup(); c3r3();putdown();c3r1();liftup();c3r5();putdown();c3r7();liftup();
+}
+if(cell3==5){//third cell five 
+c3r1();putdown();c3l1();liftup();c3l2();putdown();c3l3();liftup(); c3l4();putdown();c3r4();liftup();c3r5();putdown();c3r6();liftup();c3r7();putdown();c3l7();liftup();
+}
+if(cell4==0){ //fourth cell zero
+c4l1();putdown();c4r1();liftup();c4r2();putdown();c4r3();liftup();c4r5();putdown();c4r6();liftup();c4r7();putdown();c4l7();liftup();c4l6();putdown();c4l5();liftup();c4l3();putdown();c4l2();liftup();
+}
+if(cell4==1){ //fourth cell one
+c4r1();putdown();c4r3();liftup();c4r5();putdown();c4r7();liftup();
+}
+if(cell4==2){ //fourth cell two
+c4l1();putdown();c4r1();liftup();c4r2();putdown();c4r3();liftup(); c4r4();putdown();c4l4();liftup();c4l5();putdown();c4l6();liftup(); c4l7();putdown();c4r7();liftup();
+}
+if(cell4==3){//fourth cell three
+c4l1();putdown();c4r1();liftup();c4r2();putdown();c4r3();liftup(); c4r4();putdown();c4l4();liftup();c4r5();putdown();c4r6();liftup(); c4r7();putdown();c4l7();liftup();
+}
+if(cell4==4){//fourth cell four
+c4l1();putdown();c4l3();liftup();c4l4();putdown();c4r4();liftup(); c4r3();putdown();c4r1();liftup();c4r5();putdown();c4r7();liftup();
+}
+if(cell4==5){//fourth cell five
+c4r1();putdown();c4l1();liftup();c4l2();putdown();c4l3();liftup(); c4l4();putdown();c4r4();liftup();c4r5();putdown();c4r6();liftup(); c4r7();putdown();c4l7();liftup();
+}
+if(cell4==6){//fourth cell six
+c4r1();putdown();c4l1();liftup();c4l2();putdown();c4l3();liftup(); c4l4();putdown();c4r4();liftup();c4r5();putdown();c4r6();liftup(); c4r7();putdown();c4l7();liftup();c4l6();putdown();c4l5();liftup();
+}
+if(cell4==7){//fourth cell seven
+c4l1();putdown();c4r1();liftup();c4r2();putdown();c4r3();liftup();c4r5();putdown();c4r7();liftup();
+}
+if(cell4==8){//fourth cell eight
+c4l1();putdown();c4r1();liftup();c4r2();putdown();c4r3();liftup();c4r5();putdown();c4r6();liftup();c4r7();putdown();c4l7();liftup();c4l6();putdown();c4l5();liftup();c4l3();putdown();c4l2();liftup();
+c4l4();putdown();c4r4();liftup();
+}
+if(cell4==9){//fourth cell nice
+c4l1();putdown();c4r1();liftup();c4r2();putdown();c4r3();liftup();c4r5();putdown();c4r7();liftup();c4l2();putdown();c4l3();liftup();c4l4();putdown();c4r4();liftup();c4l7();putdown();c4r7();liftup();
+}
+
+}
+void c1r1(){servoleft.write(117); servoright.write(90);}
+void c1r2(){servoleft.write(120); servoright.write(87);}
+void c1r3(){servoleft.write(124); servoright.write(82);}
+void c1r4(){ servoleft.write(125); servoright.write(81);}
+void c1r5(){servoleft.write(126); servoright.write(80);}
+void c1r6(){servoleft.write(128); servoright.write(78);}
+void c1r7(){servoleft.write(129); servoright.write(77);}
+
+void c2l1(){servoleft.write(115); servoright.write(87);}
+void c2l2(){servoleft.write(118); servoright.write(84);}
+void c2l3(){servoleft.write(122); servoright.write(80); }
+void c2l4(){ servoleft.write(123); servoright.write(78); }
+void c2l5(){servoleft.write(124); servoright.write(77); }
+void c2l6(){servoleft.write(126); servoright.write(76); }
+void c2l7(){servoleft.write(128); servoright.write(75); }
+
+void c2r1(){servoleft.write(106); servoright.write(73);}
+void c2r2(){servoleft.write(108); servoright.write(70);}
+void c2r3(){servoleft.write(112); servoright.write(66);}
+void c2r4(){servoleft.write(113); servoright.write(66);}
+void c2r5(){servoleft.write(114); servoright.write(62);}
+void c2r6(){servoleft.write(115); servoright.write(60);}
+void c2r7(){servoleft.write(116); servoright.write(60);}
+
+void c3l1(){servoleft.write(102); servoright.write(68); }
+void c3l2(){  servoleft.write(105); servoright.write(65); }
+void c3l3(){servoleft.write(107); servoright.write(61); }
+void c3l4(){servoleft.write(109); servoright.write(60); }
+void c3l5(){servoleft.write(110); servoright.write(59); }
+void c3l6(){servoleft.write(112); servoright.write(56); }
+void c3l7(){  servoleft.write(113); servoright.write(55); }
+
+void c3r1(){servoleft.write(88); servoright.write(56); }
+void c3r2(){servoleft.write(91); servoright.write(53); }
+void c3r3(){  servoleft.write(95); servoright.write(48); }
+void c3r4(){servoleft.write(96); servoright.write(47); }
+void c3r5(){servoleft.write(97); servoright.write(45); }
+void c3r6(){servoleft.write(99); servoright.write(43); }
+void c3r7(){  servoleft.write(99); servoright.write(40); }
+
+void c4l1(){servoleft.write(86); servoright.write(55); }
+void c4l2(){servoleft.write(89); servoright.write(52); }
+void c4l3(){  servoleft.write(93); servoright.write(46); }
+void c4l4(){servoleft.write(94); servoright.write(44); }
+void c4l5(){  servoleft.write(95); servoright.write(42); }
+void c4l6(){  servoleft.write(96); servoright.write(39); }
+void c4l7(){servoleft.write(97); servoright.write(38); }
+
+void c4r1(){servoleft.write(68); servoright.write(43);}
+void c4r2(){servoleft.write(70); servoright.write(42);}
+void c4r3(){servoleft.write(76); servoright.write(37);}
+void c4r4(){servoleft.write(78); servoright.write(35);}
+void c4r5(){servoleft.write(79); servoright.write(33);}
+void c4r6(){servoleft.write(83); servoright.write(27);}
+void c4r7(){servoleft.write(84); servoright.write(25);}
+
+void liftup(){delay(500);servolift.write(up);delay(500);}
+void putdown(){delay(500);servolift.write(down);delay(500);}
