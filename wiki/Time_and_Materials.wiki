@@ -1,5 +1,5 @@
 #summary Time and Cost of the Project
 
-= Time Breakdown =
+== Time Breakdown ==
 
-= Materials and Cost =
+== Materials and Cost ==
