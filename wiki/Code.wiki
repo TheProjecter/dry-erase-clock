@@ -247,5 +247,3 @@ void c4r7(){servoleft.write(84); servoright.write(25);}
 
 void liftup(){delay(500);servolift.write(up);delay(500);}
 void putdown(){delay(500);servolift.write(down);delay(500);}
-
-<\code>
