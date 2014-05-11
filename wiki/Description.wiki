@@ -1,8 +1,18 @@
 #summary Details of the Project
 
-== Introduction ==
+== Overview ==
 
 
+== Circuit ==
 
 
-== Details ==
+== Implementation ==
+
+
+== Alternative Approaches ==
+
+
+== Problems and Solutions ==
+
+
+== Next Step ==
