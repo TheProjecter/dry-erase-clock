@@ -32,24 +32,26 @@ int newminute=0;
 //attach servos to pins
 void setup() 
 {
-  setTime(12,10,0,2,5,2014);
+  setTime(11, 23,0,2,5,2014);
   newtime=true;
   newminute=minute();
   servolift.write(up);
   servolift.attach(5); 
   servoleft.attach(4);
   servoright.attach(3); 
+  
 } 
 
 
 void loop() 
-{    if(minute()!=newminute){
+{    
+  if(minute()!=newminute){
     newminute=minute();
-  newtime=false;
+  newtime=true;
   }
   timelogic();
 if(newtime==true){ //update the whiteboard everytime the time changes
-  erase();
+ // erase();
   number(a,b,c,d);
   servolift.write(up);
   delay(1000);
@@ -84,11 +86,26 @@ void timelogic(){
 
 void middle(){ //logic for middle lines
 
- 
 }
 
 void erase(){ //logic for erasing
-  
+servoright.write(homeposright);
+servoleft.write(homeposleft);
+servolift.write(down);
+delay(1000);
+c1r4();
+delay(1000);
+c4r4();
+delay(1000);
+c1r4();
+delay(1000);
+c4r4();
+delay(1000);
+servoright.write(homeposright);
+servoleft.write(homeposleft);
+delay(1000);
+servolift.write(up);
+delay(1000);
 }
 
 void number(int cell1, int cell2, int cell3, int cell4) //contains the servo positions for writing all of the possible numbers
@@ -229,13 +246,13 @@ void c3r5(){servoleft.write(97); servoright.write(45); }
 void c3r6(){servoleft.write(99); servoright.write(43); }
 void c3r7(){  servoleft.write(99); servoright.write(40); }
 
-void c4l1(){servoleft.write(86); servoright.write(55); }
+void c4l1(){servoleft.write(87); servoright.write(54); }
 void c4l2(){servoleft.write(89); servoright.write(52); }
 void c4l3(){  servoleft.write(93); servoright.write(46); }
 void c4l4(){servoleft.write(94); servoright.write(44); }
 void c4l5(){  servoleft.write(95); servoright.write(42); }
 void c4l6(){  servoleft.write(96); servoright.write(39); }
-void c4l7(){servoleft.write(97); servoright.write(38); }
+void c4l7(){servoleft.write(95); servoright.write(36); }
 
 void c4r1(){servoleft.write(68); servoright.write(43);}
 void c4r2(){servoleft.write(70); servoright.write(42);}
