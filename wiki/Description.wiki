@@ -1,9 +1,18 @@
 #summary Details of the Project
 
 == Overview ==
-http://i.imgur.com/xiVW1eG.jpg
+
+I decided to do this project when I saw a similar project online. I thought it was a cool variation of a clock and wanted to see how complicated it would be to build. The building of the system and designing of the code were done based on the projects I saw online, but were all done and written from scratch. The main idea of the project is that when the two servos that are attacked to the lego arms turn, it moves the marker attached to the end. When the two move in conjunction it can move the marker in different directions. Through trial and error I learned roughly what positions of the servo resulted in what position of the marker and used this to design a 56 point grid used to write all of the numbers. The grid logic is expanded on in the code section of the wiki.
+
+This is the top down view of the project. The marker is controlled by two servos that when turned result in different positions of the marker. The two servos are then connected to a lift servo that can pick up and put down the marker.
 
 http://i.imgur.com/kE736l9.jpg
+
+This is the side view of the project. As you can see the two servos are attached to the lift servo by a wooden frame. This is what allows the system to pick up and put down the marker
+
+http://i.imgur.com/xiVW1eG.jpg
+
+This is a picture of the circuit. The circuit is very simple and is described in the next section.
 
 http://i.imgur.com/nfVxCAI.jpg
 
