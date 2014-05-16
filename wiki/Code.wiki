@@ -4,6 +4,8 @@
 
 ==Logic Block Diagram==
 
+http://i.imgur.com/aWeMIJL.png
+
 ==Code==
 <code language = "arduino">
 
