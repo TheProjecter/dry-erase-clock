@@ -2,6 +2,8 @@
 
 ==Code Description=
 
+The code follows the logic displayed in the block diagram in the next section. The first thing it does when it is turned on is erases the board. This part of the code is not currently working so it is commented out. The next step is to decide what numbers will be written. It does this by running through man if statements that decide the correct variables a,b,c,d to send to the writing function. a is the number to be written the first cell, b the second and so on. Once all 4 have been determined the writing function is called. Inside this function are conditions for each possible number for each cell. for example when a is one, the one function for cell one is called. In each one of these functions is a series of pickup and putdown lines between the correct points on the 
+
 ==Logic Block Diagram==
 
 http://i.imgur.com/laNnlnz.png
