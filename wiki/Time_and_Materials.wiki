@@ -2,7 +2,7 @@
 
 == Time Breakdown ==
 
-   Most of the time spent was on trying to clean up the writing process to make the numbers look as nice as possible. A full breakdown of the topics and the time spent on each of them is included below. 
+Most of the time spent was on trying to clean up the writing process to make the numbers look as nice as possible. A full breakdown of the topics and the time spent on each of them is included below. 
 
 Writing Code: 10 hours. I started by reading sample code from projects with a similar premise, but in the end decided I just wanted to write the code from the ground up. This took a lot of time including identifying each point on the grid.
 
