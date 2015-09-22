@@ -1,0 +1,35 @@
+## Overview ##
+
+I decided to do this project when I saw a similar project online. I thought it was a cool variation of a clock and wanted to see how complicated it would be to build. The building of the system and designing of the code were done based on the projects I saw online, but were all done and written from scratch. The main idea of the project is that when the two servos that are attacked to the lego arms turn, it moves the marker attached to the end. When the two move in conjunction it can move the marker in different directions. Through trial and error I learned roughly what positions of the servo resulted in what position of the marker and used this to design a 56 point grid used to write all of the numbers. The grid logic is expanded on in the code section of the wiki.
+
+This is the top down view of the project. The marker is controlled by two servos that when turned result in different positions of the marker. The two servos are then connected to a lift servo that can pick up and put down the marker.
+
+![http://i.imgur.com/kE736l9.jpg](http://i.imgur.com/kE736l9.jpg)
+
+This is the side view of the project. As you can see the two servos are attached to the lift servo by a wooden frame. This is what allows the system to pick up and put down the marker
+
+![http://i.imgur.com/xiVW1eG.jpg](http://i.imgur.com/xiVW1eG.jpg)
+
+This is a picture of the circuit. The circuit is very simple and is described in the next section.
+
+![http://i.imgur.com/nfVxCAI.jpg](http://i.imgur.com/nfVxCAI.jpg)
+
+## Circuit ##
+
+The circuit used is an extremely simple one. The only components are the arduino and three servos. The three servos are connected to the VCC pin and GND pin on the arduino and also to pins 3,4,5 respectively for the data. This is the only circuit need for the project.
+
+## Alternative Approaches ##
+
+The main difference in the way I designed this clock and other ways of doing it are the way the numbers are written. I decided to do a point by point approach for each number. I broke each cell down into 14 points and connected the correspond points for each number to try to give the look of a seven segment display. Other people who have done similar projects have not broken the cell into points, but had the servos move a different speeds for different amounts of time to write each letter. This approach is much more complicated but could result in smoother numbers.
+
+## Problems and Solutions ##
+
+The main issue as mention before is the lack of erasing of the system. this is the final thing needed to make this a function clock. Below is a demonstration of how the erasing works, if the servo was able to push hard enough to erase the numbers
+
+> <a href='http://www.youtube.com/watch?feature=player_embedded&v=_KncmQW7pPg' target='_blank'><img src='http://img.youtube.com/vi/_KncmQW7pPg/0.jpg' width='425' height=344 /></a>.
+
+The solution to this problem would be to either replace the servo or the arms of the system to be able to apply more pressure to the board. And also a small compartment would need to be built to hold the eraser between the erasing functions. With these additions the system would be able to run by itself.
+
+## Next Step ##
+
+The next step would be trying to find a way to mount the system on a wall, and to maybe increase the size of the numbers. This would make the project actually usable in the real world, and would be a cool clock for an engineering firm or department to try to bring in more people.

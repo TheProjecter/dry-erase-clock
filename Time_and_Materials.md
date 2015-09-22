@@ -1,0 +1,29 @@
+## Time Breakdown ##
+
+Most of the time spent was on trying to clean up the writing process to make the numbers look as nice as possible. A full breakdown of the topics and the time spent on each of them is included below.
+
+Writing Code: 10 hours. I started by reading sample code from projects with a similar premise, but in the end decided I just wanted to write the code from the ground up. This took a lot of time including identifying each point on the grid.
+
+Building the servo system: 3 hours. The servo system was pretty each to build with its simple design. The main focus was securing the servos to the lift servo so the up and down process would not move the system out of alignment.
+
+Attaching the servo system to Whiteboard: 3 hours. This took longer than expected and required building the small would wall around the servos to ensure they would not shift after the lifting process.
+
+Debugging and tweaking of Code: 15 hours. This mainly involved slightly moving many points on the grid to make the lines between two points straighter or smoother. This process became a rather larger headache since the moving of one point to improve a line may make another line look worse, and so on.
+
+Total Time Spent: 31 hours.
+
+## Materials and Cost ##
+
+3 servos: $6.00 each for a total of $18.00
+
+Arduino uno: $25.00
+
+Wood for white board and servo system: $5.00
+
+Whiteboard marker/eraser: $10.00
+
+Breadboard: $5.00
+
+Whiteboard Paint: $15.00
+
+Total: $78.00
